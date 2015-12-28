@@ -25,8 +25,8 @@ I'll add the Play store link here as soon as possible ;)
 
 ## Team Members 
 
-.Jebali Ala Eddine
-.Amri Kouki Sarra
+. Jebali Ala Eddine
+. Amri Kouki Sarra
 
 ## Credits
 
