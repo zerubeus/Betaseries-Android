@@ -9,5 +9,35 @@
                 tools:context=".MainActivity">
 
 
+    <LinearLayout
+        android:id="@+id/linearlayout"
+        android:orientation="horizontal"
+        android:background="#ccff81e8"
+        android:layout_width="fill_parent"
+        android:layout_height="23dp">
+
+        <TextView
+            android:id="@+id/selectedLocationText"
+            android:textColor="#fff"
+            android:text="Selected Type:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:paddingLeft="4dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_below="@id/linearlayout"
+        android:dividerHeight="2dp"
+        android:divider="#ff9e99fd"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"></ListView>
+
+
+
+
 
 </RelativeLayout>
