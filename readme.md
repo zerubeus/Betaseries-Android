@@ -3,8 +3,10 @@
 TODO: 
 
 - Get and display data from a rest interface : OK
-- Usage of the stendard Android API (recycleview, intent, toast ...) : OK
+- Usage of the standard Android API (recycleview, intent, toast ...) : OK
 - Layouts needs to use resources to display and translate strings (in EN and FR) : OK
+- API Betaseries ( MY KEY : "cf4258cf28b7" a reminder for me :p ) doesn't seem to work :/ : KO
+- I'll finely use the Omdb API well documented !! ( My KEY : "9b522d5b" )
 
 ## Installation
 
