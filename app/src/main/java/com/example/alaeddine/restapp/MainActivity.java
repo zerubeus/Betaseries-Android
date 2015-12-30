@@ -17,7 +17,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
-    private String urlSerie = "https://api.betaseries.com/shows/list?key=cf4258cf28b7&limit=50&start=50";
+    private String urlSerie = "https://api.betaseries.com/shows/list?key=cf4258cf28b7&limit=50&start=50&format=json";
     private String urlSerieImage = "https://api.betaseries.com/shows/pictures?key=cf4258cf28b7&id=";
     private String urlSerieInfo = "http://api.betaseries.com/shows/display?key=cf4258cf28b7&id=";
 
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    JSONObject showObject = response.getJSONObject("show");
+                    JSONObject showObject = response.getJSONObject("shows");
                     Log.v("Data: ", showObject.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
