@@ -26,7 +26,7 @@
         android:layout_marginTop="18dp"/>
 
     <TextView
-        android:id="@+id/sereType"
+        android:id="@+id/sereiesType"
         android:text="Type:"
         android:textStyle="italic"
         android:textColor="#ff212121"
@@ -37,14 +37,14 @@
         android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:id="@+id/serieDate"
+        android:id="@+id/seriesDate"
         android:text="When:"
         android:textStyle="italic"
         android:textColor="#ff212121"
         android:textSize="16sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sereType"
+        android:layout_below="@+id/sereiesType"
         android:layout_centerHorizontal="true"/>
 
     <TextView
@@ -56,7 +56,7 @@
         android:background="#ff2e2e2e"
         android:layout_marginLeft="25dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/serieDate"
+        android:layout_below="@+id/seriesDate"
         android:layout_width="match_parent"
         android:layout_centerHorizontal="true"/>
 
