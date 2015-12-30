@@ -5,17 +5,31 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONStringer;
+
+import java.util.ArrayList;
+
+import Data.CustomListViewAdapter;
+import Model.Series;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private CustomListViewAdapter adapter;
+    private ArrayList<Series> series = new ArrayList<>();
+    private ListView listView;
+    private TextView selectedCity;
 
     private String urlSerie = "https://api.betaseries.com/shows/list?key=cf4258cf28b7&limit=50&start=50&format=json";
     private String urlSerieImage = "https://api.betaseries.com/shows/pictures?key=cf4258cf28b7&id=";
@@ -26,11 +40,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        JsonObjectRequest seriesRequest = new JsonObjectRequest(Request.Method.GET, urlSerie, (JSONObject)null, new Response.Listener<JSONObject>() {
+        getSeries("609");
+
+
+    }
+
+
+    private void getSeries(String id) {
+        //clear data first
+        series.clear();
+
+        String finalurl = urlSerieInfo+id;
+
+        JsonObjectRequest seriesRequest = new JsonObjectRequest(Request.Method.GET, finalurl, (JSONObject)null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    JSONObject showObject = response.getJSONObject("shows");
+                    JSONObject showObject = response.getJSONObject("show");
+                    
                     Log.v("Data: ", showObject.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -44,8 +71,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         AppController.getInstance().addToRequestQueue(seriesRequest);
-
-
     }
 
 
