@@ -73,11 +73,25 @@ public class CustomListViewAdapter extends ArrayAdapter<Series> {
             viewHolder.when = (TextView)row.findViewById(R.id.seriesDate);
             viewHolder.season = (TextView)row.findViewById(R.id.seriesSeasons);
 
+            row.setTag(viewHolder);
+
+        }else {
+            viewHolder = (ViewHolder) row.getTag();
         }
 
+        viewHolder.serie = data.get(position);
+
+        // we can now display data
+
+        viewHolder.title.setText("Serie name : " + viewHolder.serie.getTitle());
+        viewHolder.type.setText("Type : " + viewHolder.serie.getType());
+        viewHolder.when.setText(" When : " + viewHolder.serie.getDate());
+        viewHolder.season.setText("Season : " + viewHolder.serie.getSeasons());
+        viewHolder.seriesImage.setImageUrl(viewHolder.serie.getUrl(), imageLoader);
 
 
-        return super.getView(position, convertView, parent);
+
+        return row;
     }
 
 

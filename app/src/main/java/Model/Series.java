@@ -14,6 +14,15 @@ public class Series implements Serializable {
     private String info;
     private String seasons;
     private String seriesImage;
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 
     public static long getId() {
         return id;

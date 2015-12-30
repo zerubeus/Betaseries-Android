@@ -1,18 +1,42 @@
 package com.example.alaeddine.restapp;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 
-public class MainActivity extends ActionBarActivity {
+import org.json.JSONObject;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    private String urlSerie = "https://api.betaseries.com/shows/list?key=cf4258cf28b7&limit=50&start=50";
+    private String urlSerieImage = "https://api.betaseries.com/shows/pictures?key=cf4258cf28b7&id=";
+    private String urlSerieInfo = "http://api.betaseries.com/shows/display?key=cf4258cf28b7&id=";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        JsonObjectRequest seriesRequest = new JsonObjectRequest(Request.Method.GET, urlSerie, (JSONObject)null, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(seriesRequest);
 
 
     }
