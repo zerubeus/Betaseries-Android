@@ -17,9 +17,9 @@
         android:layout_height="23dp">
 
         <TextView
-            android:id="@+id/selectedLocationText"
+            android:id="@+id/selectedTypeText"
             android:textColor="#fff"
-            android:text="Selected Type:"
+            android:text="Selected Type :"
             android:textSize="16sp"
             android:textStyle="bold"
             android:paddingLeft="4dp"
