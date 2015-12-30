@@ -2,6 +2,7 @@ package com.example.alaeddine.restapp;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -10,6 +11,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -27,7 +29,12 @@ public class MainActivity extends AppCompatActivity {
         JsonObjectRequest seriesRequest = new JsonObjectRequest(Request.Method.GET, urlSerie, (JSONObject)null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-
+                try {
+                    JSONObject showObject = response.getJSONObject("show");
+                    Log.v("Data: ", showObject.toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
         }, new Response.ErrorListener() {
             @Override
