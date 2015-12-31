@@ -38,12 +38,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSeries(urlGenerator(getAllSeriesId()));
+        getSeries("609");
 
 
 
     }
 
+    /*
     // I dont know if this is the best whay to do the trick but yeah .. I hope
     private ArrayList<String> getAllSeriesId() {
         final ArrayList<String> seriesIds = new ArrayList<>();
@@ -72,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
         });
         AppController.getInstance().addToRequestQueue(seriesIdRequest);
         return seriesIds;
-    }
+    } */
 
-
+    /*
     private ArrayList<String> urlGenerator(ArrayList<String> ids) {
         final ArrayList<String> SeriesUrl = new ArrayList<>();
 
@@ -83,23 +84,29 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return SeriesUrl;
-    }
+    } */
 
 
-    private void getSeries(ArrayList<String> Urls) {
+    private void getSeries(String id) {
         //clear data first
         series.clear();
+        String finalUrl = urlSerieInfo+id;
 
-        for (int i = 0; i < Urls.size(); i++) {
-
-            JsonObjectRequest seriesRequest = new JsonObjectRequest(Request.Method.GET, Urls.get(i), (JSONObject)null, new Response.Listener<JSONObject>() {
+            JsonObjectRequest seriesRequest = new JsonObjectRequest(Request.Method.GET, finalUrl, (JSONObject)null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     try {
                         JSONObject showObject = response.getJSONObject("show");
                         String title = showObject.getString("title");
+                        String type = showObject.getJSONArray("genres").get(0).toString();
+                        String info = showObject.getString("description");
+                        String url = showObject.getString("resource_url");
 
                         Log.v("Data: ", title);
+                        Log.v("Data: ", type);
+                        Log.v("Data: ", info);
+                        Log.v("Data: ", url);
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
@@ -112,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
             AppController.getInstance().addToRequestQueue(seriesRequest);
-        }
+
 
 
     }
