@@ -16,8 +16,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONStringer;
-
 import java.util.ArrayList;
 
 import Data.CustomListViewAdapter;
@@ -40,25 +38,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSeries("609");
+        getSeries(urlGenerator(getAllSeriesId()));
+
 
 
     }
 
-
-    private void getSeries(String id) {
-        //clear data first
-        series.clear();
-
-        String finalurl = urlSerieInfo+id;
-
-        JsonObjectRequest seriesRequest = new JsonObjectRequest(Request.Method.GET, finalurl, (JSONObject)null, new Response.Listener<JSONObject>() {
+    // I dont know if this is the best whay to do the trick but yeah .. I hope
+    private ArrayList<String> getAllSeriesId() {
+        final ArrayList<String> seriesIds = new ArrayList<>();
+        String finalIdUrl = urlSerie;
+        JsonObjectRequest seriesIdRequest = new JsonObjectRequest(Request.Method.GET, finalIdUrl, (JSONObject)null, new Response.Listener<JSONObject>(){
             @Override
             public void onResponse(JSONObject response) {
+
                 try {
-                    JSONObject showObject = response.getJSONObject("show");
-                    
-                    Log.v("Data: ", showObject.toString());
+                    JSONArray arryOfIds = response.getJSONArray("shows");
+
+                    for (int i = 0; i < arryOfIds.length(); i++) {
+                        seriesIds.add(arryOfIds.getJSONObject(i).get("id").toString());
+                    }
+                    //Log.v("Lol : ", arryOfIds.toString());
+                    //Log.v("lolll : ", oneId);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -69,8 +70,51 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        AppController.getInstance().addToRequestQueue(seriesIdRequest);
+        return seriesIds;
+    }
 
-        AppController.getInstance().addToRequestQueue(seriesRequest);
+
+    private ArrayList<String> urlGenerator(ArrayList<String> ids) {
+        final ArrayList<String> SeriesUrl = new ArrayList<>();
+
+        for (int i = 0; i < ids.size(); i++) {
+            SeriesUrl.add(urlSerieInfo+ids.get(i));
+        }
+
+        return SeriesUrl;
+    }
+
+
+    private void getSeries(ArrayList<String> Urls) {
+        //clear data first
+        series.clear();
+
+        for (int i = 0; i < Urls.size(); i++) {
+
+            JsonObjectRequest seriesRequest = new JsonObjectRequest(Request.Method.GET, Urls.get(i), (JSONObject)null, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    try {
+                        JSONObject showObject = response.getJSONObject("show");
+                        String title = showObject.getString("title");
+
+                        Log.v("Data: ", title);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            });
+
+            AppController.getInstance().addToRequestQueue(seriesRequest);
+        }
+
+
     }
 
 
