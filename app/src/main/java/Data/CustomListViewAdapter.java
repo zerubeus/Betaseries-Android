@@ -70,7 +70,7 @@ public class CustomListViewAdapter extends ArrayAdapter<Series> {
             viewHolder.seriesImage = (NetworkImageView)row.findViewById(R.id.seriesImage);
             viewHolder.title = (TextView)row.findViewById(R.id.headLinerText);
             viewHolder.type = (TextView)row.findViewById(R.id.sereiesType);
-            viewHolder.when = (TextView)row.findViewById(R.id.seriesDate);
+            viewHolder.network = (TextView)row.findViewById(R.id.seriesDate);
             viewHolder.season = (TextView)row.findViewById(R.id.seriesSeasons);
 
             row.setTag(viewHolder);
@@ -85,7 +85,7 @@ public class CustomListViewAdapter extends ArrayAdapter<Series> {
 
         viewHolder.title.setText("Serie name : " + viewHolder.serie.getTitle());
         viewHolder.type.setText("Type : " + viewHolder.serie.getType());
-        viewHolder.when.setText(" When : " + viewHolder.serie.getDate());
+        viewHolder.network.setText(" Network : " + viewHolder.serie.getNetwork());
         viewHolder.season.setText("Season : " + viewHolder.serie.getSeasons());
         viewHolder.seriesImage.setImageUrl(viewHolder.serie.getUrl(), imageLoader);
 
@@ -99,7 +99,7 @@ public class CustomListViewAdapter extends ArrayAdapter<Series> {
         Series serie;
         TextView title;
         TextView type;
-        TextView when;
+        TextView network;
         TextView season;
         NetworkImageView seriesImage;
     }

@@ -9,7 +9,10 @@ public class Series implements Serializable {
 
     private static final long id = 1L;
     private String title;
-    private String date;
+
+
+
+    private String network;
     private String Type;
     private String info;
     private String seasons;
@@ -36,16 +39,16 @@ public class Series implements Serializable {
         this.title = title;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
     public String getType() {
         return Type;
+    }
+
+    public String getNetwork() {
+        return network;
+    }
+
+    public void setNetwork(String network) {
+        this.network = network;
     }
 
     public void setType(String type) {

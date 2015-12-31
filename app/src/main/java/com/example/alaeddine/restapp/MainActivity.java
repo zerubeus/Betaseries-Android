@@ -102,12 +102,16 @@ public class MainActivity extends AppCompatActivity {
                         String info = showObject.getString("description");
                         String url = showObject.getString("resource_url");
                         String seasons = showObject.getString("seasons");
+                        String network = showObject.getString("network");
+                        String imgUrl = urlSerieImage+showObject.getString("id");
 
                         Log.v("Data: ", title);
                         Log.v("Data: ", type);
                         Log.v("Data: ", info);
                         Log.v("Data: ", url);
                         Log.v("Data: ", seasons);
+                        Log.v("Data: ", network);
+                        Log.v("Data: ", imgUrl);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
