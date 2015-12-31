@@ -101,11 +101,13 @@ public class MainActivity extends AppCompatActivity {
                         String type = showObject.getJSONArray("genres").get(0).toString();
                         String info = showObject.getString("description");
                         String url = showObject.getString("resource_url");
+                        String seasons = showObject.getString("seasons");
 
                         Log.v("Data: ", title);
                         Log.v("Data: ", type);
                         Log.v("Data: ", info);
                         Log.v("Data: ", url);
+                        Log.v("Data: ", seasons);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
