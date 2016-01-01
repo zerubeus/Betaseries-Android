@@ -15,14 +15,14 @@ public class Prefs {
         preferences = activity.getPreferences(Activity.MODE_PRIVATE);
     }
 
-    public void setType(String type) {
-        preferences.edit().putString("type", type).commit();
+    public void setLimit(String limit) {
+        preferences.edit().putString("limit", limit).commit();
     }
 
     // in case the user ddt't choose a type
-    public String getType() {
+    public String getLimit() {
         // we gonna use a default type Drama series
-        return preferences.getString("type", "Drama");
+        return preferences.getString("limit", "50");
     }
 
 }
