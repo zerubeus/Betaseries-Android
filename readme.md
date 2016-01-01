@@ -9,7 +9,11 @@ TODO:
 
 # NOTES
 
-- The Betaseries does't have a single one JSON with all Data needed so this was the hardest part for us, the solution was to use callbacks to manage multiple JSON file because JsonObjectRequest in Async so we can't use the fuction to return a value
+- The Betaseries does't have a single one JSON with all Data needed so this was the hardest part for us, the solution was to use callbacks to manage multiple JSON file because JsonObjectRequest is Async so we can't use the function to return a value.
+- For the the HTTP requests we have only used the GET method with the powerful Android Volley <3
+- YES so the trickiest part so far was the callbacks I'm not sure it's the best way to manage Async tasks in JAVA but YEAH .. ( thanks to my NodeJs background :3 ) 
+- Finely please apologies my spaghetti code style :p
+
 
 ## Installation
 
