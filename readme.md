@@ -20,6 +20,11 @@ TODO:
 - Git clone this repo 
 - import it in Android studio and let Gradle do the job for you :)
 
+```javascript
+    compileSdkVersion 23
+    buildToolsVersion '23.0.0'
+```
+
 ## Usage
 
 I'll add the Play store link here as soon as possible ;)
