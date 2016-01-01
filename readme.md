@@ -22,6 +22,8 @@ TODO:
 
 ## Installation
 
+- You can download the App (APK) from this ----> [LINK](https://drive.google.com/file/d/0B6R1MuyxwurbbVlmX3ZLNXExVUk/view?usp=sharing) 
+
 - Git clone this repo 
 - import it in Android studio and let Gradle do the job for you :)
 
