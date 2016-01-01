@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView listView;
     private TextView selectedCity;
 
-    private String urlSerie = "https://api.betaseries.com/shows/list?key=cf4258cf28b7&limit=100&start=300&format=json";
+    private String urlSerie = "https://api.betaseries.com/shows/list?key=cf4258cf28b7&limit=100&start=308&format=json";
     private String urlSerieImage = "https://api.betaseries.com/shows/pictures?key=cf4258cf28b7&id=";
     private String urlSerieInfo = "http://api.betaseries.com/shows/display?key=cf4258cf28b7&id=";
 
