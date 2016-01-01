@@ -17,9 +17,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import Data.CustomListViewAdapter;
@@ -31,10 +28,11 @@ public class MainActivity extends AppCompatActivity {
     private CustomListViewAdapter adapter;
     private ArrayList<Series> series = new ArrayList<>();
     private ArrayList<String> seriesIds;
+    private ArrayList<String> imagesUrls;
     private ListView listView;
     private TextView selectedCity;
 
-    private String urlSerie = "https://api.betaseries.com/shows/list?key=cf4258cf28b7&limit=20&start=100&format=json";
+    private String urlSerie = "https://api.betaseries.com/shows/list?key=cf4258cf28b7&limit=100&start=300&format=json";
     private String urlSerieImage = "https://api.betaseries.com/shows/pictures?key=cf4258cf28b7&id=";
     private String urlSerieInfo = "http://api.betaseries.com/shows/display?key=cf4258cf28b7&id=";
 
@@ -53,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
                 getSeries(urlGenerator(result));
             }
         });
+
+        //getSeriesImages("609");
 
         //urlGenerator(seriesIds);
 
@@ -75,6 +75,38 @@ public class MainActivity extends AppCompatActivity {
                     }
                     callback.onSuccess(seriesIds);
                     //Log.v("lolll : ", oneId);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        AppController.getInstance().addToRequestQueue(seriesIdRequest);
+    }
+
+    private void getSeriesImages(final String imagesIds, final VolleyCallback callback) { // , final VolleyCallback callback
+        String finalIdUrl = urlSerieImage+imagesIds;
+        imagesUrls = new ArrayList<>();
+        JsonObjectRequest seriesIdRequest = new JsonObjectRequest(Request.Method.GET, finalIdUrl, (JSONObject)null, new Response.Listener<JSONObject>(){
+            @Override
+            public void onResponse(JSONObject response) {
+
+                try {
+                    JSONArray arryOfimages = response.getJSONArray("pictures");
+                    if(arryOfimages.getJSONObject(0).get("url").toString() == null){
+                        imagesUrls.add(0, "http://www.sdpb.org/s/photogallery/img/no-image-available.jpg");
+                    }else {
+                        imagesUrls.add(0,arryOfimages.getJSONObject(0).get("url").toString());
+                    }
+
+
+                    callback.onSuccess(imagesUrls);
+
+                    //Log.v("loooooool : ", imagesIds);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -121,20 +153,33 @@ public class MainActivity extends AppCompatActivity {
                         String seasons = showObject.getString("seasons");
                         String network = showObject.getString("network");
 
+                        final String[] imgUrl = {null};
+
+                        final Series serie = new Series();
+
+                        getSeriesImages(showObject.getString("id"), new VolleyCallback() {
+                            @Override
+                            public void onSuccess(ArrayList<String> result) {
+                                imgUrl[0] = result.get(0);
+                                //Log.v("Data: ", imgUrl[0]);
+                                serie.setSeriesImage(imgUrl[0]);
+                            }
+                        });
 
 
-                        String imgUrl = urlSerieImage+showObject.getString("id");
 
-                        Log.v("Data ID: ", showObject.getString("id"));
-                        Log.v("Data: ", title);
-                        Log.v("Data: ", type);
-                        Log.v("Data: ", info);
-                        Log.v("Data: ", url);
-                        Log.v("Data: ", seasons);
-                        Log.v("Data: ", network);
-                        Log.v("Data: ", imgUrl);
+                        //Log.v("Data ID: ", showObject.getString("id"));
+                        //Log.v("Data: ", title);
+                        //Log.v("Data: ", type);
+                        //Log.v("Data: ", info);
+                        //Log.v("Data: ", url);
+                        //Log.v("Data: ", seasons);
+                        //Log.v("Data: ", network);
+                        //Log.v("Data: ", imgUrl[0]);
 
-                        Series serie = new Series();
+
+
+
 
                         serie.setTitle(title);
                         serie.setType(type);
@@ -142,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
                         serie.setUrl(url);
                         serie.setSeasons(seasons);
                         serie.setNetwork(network);
-                        serie.setSeriesImage(imgUrl);
+                        serie.setSeriesImage(imgUrl[0]);
 
                         series.add(serie);
 

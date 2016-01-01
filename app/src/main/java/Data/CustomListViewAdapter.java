@@ -87,7 +87,7 @@ public class CustomListViewAdapter extends ArrayAdapter<Series> {
         viewHolder.type.setText("Type : " + viewHolder.serie.getType());
         viewHolder.network.setText(" Network : " + viewHolder.serie.getNetwork());
         viewHolder.season.setText("Season : " + viewHolder.serie.getSeasons());
-        viewHolder.seriesImage.setImageUrl(viewHolder.serie.getUrl(), imageLoader);
+        viewHolder.seriesImage.setImageUrl(viewHolder.serie.getSeriesImage(), imageLoader);
 
 
 
