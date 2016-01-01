@@ -1,6 +1,8 @@
 package Data;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
+import com.example.alaeddine.restapp.ActivitySerieDetail;
 import com.example.alaeddine.restapp.AppController;
 import com.example.alaeddine.restapp.R;
 
@@ -89,6 +92,19 @@ public class CustomListViewAdapter extends ArrayAdapter<Series> {
         viewHolder.season.setText("Season : " + viewHolder.serie.getSeasons());
         viewHolder.seriesImage.setImageUrl(viewHolder.serie.getSeriesImage(), imageLoader);
 
+
+        final ViewHolder finalViewHolder = viewHolder;
+        row.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(mContext, ActivitySerieDetail.class);
+                Bundle mBundle = new Bundle();
+                mBundle.putSerializable("serieObj", finalViewHolder.serie);
+                i.putExtras(mBundle);
+                mContext.startActivity(i);
+            }
+        });
 
 
         return row;

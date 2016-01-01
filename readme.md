@@ -14,6 +14,11 @@ TODO:
 - YES so the trickiest part so far was the callbacks I'm not sure it's the best way to manage Async tasks in JAVA but YEAH .. ( thanks to my NodeJs background :3 ) 
 - Finely please apologies my spaghetti code style :p
 
+- don't forget to click on the Earth icon in the top right corner of the detail screen to go to the series page on Betaseries :
+
+![alt text](http://s10.postimg.org/j7f4nd1sp/Capture.png "Details view")
+
+
 
 ## Installation
 

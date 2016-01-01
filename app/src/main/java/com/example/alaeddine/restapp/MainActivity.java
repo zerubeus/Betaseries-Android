@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -271,6 +272,8 @@ public class MainActivity extends AppCompatActivity {
                 selectedLimit.setText("Selected Limit : " + newLimit + " Series");
 
                 showSeries(newLimit);
+
+                Toast.makeText(MainActivity.this, "New limit "+ newLimit, Toast.LENGTH_LONG).show();
 
             }
         });

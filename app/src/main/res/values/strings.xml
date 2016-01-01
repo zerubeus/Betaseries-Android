@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">RestApp</string>
+    <string name="app_name">betaseries</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="change_limit">Change Limit</string>
     <string name="my_buttons_text">Click Me</string>
+    <string name="go_website"></string>
     <string name="title_activity_activity_serie_detail">ActivitySerieDetail</string>
 </resources>
