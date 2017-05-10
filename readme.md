@@ -1,4 +1,4 @@
-# TV SHOWS (Rest App)
+# TV SHOWS APP (Consuming
 
 TODO: 
 
@@ -9,15 +9,9 @@ TODO:
 
 # NOTES
 
-- The Betaseries does't have a single one JSON with all Data needed so this was the hardest part for us, the solution was to use callbacks to manage multiple JSON file because JsonObjectRequest is Async so we can't use the function to return a value.
-- For the the HTTP requests we have only used the GET method with the powerful Android Volley <3
-- YES so the trickiest part so far was the callbacks I'm not sure it's the best way to manage Async tasks in JAVA but YEAH .. ( thanks to my NodeJs background :3 ) 
-- Finely please apologies my spaghetti code style :p
-
 - don't forget to click on the Earth icon in the top right corner of the detail screen to go to the series page on Betaseries :
 
 ![alt text](http://s10.postimg.org/j7f4nd1sp/Capture.png "Details view")
-
 
 
 ## Installation
@@ -43,15 +37,6 @@ I'll add the Play store link here as soon as possible ;)
 3. Commit your changes: `git commit -am 'Add some feature'`
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
-
-## Team Members 
-
-- Jebali Ala Eddine
-- Amri Kouki Sarra
-
-## Credits
-
-Special thanks to Pierre Emmanuel Fabrigli our lovely professor
 
 ## License
 
