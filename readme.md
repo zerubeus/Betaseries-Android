@@ -1,11 +1,11 @@
-# TV SHOWS APP (Consuming
+# TV SHOWS APP (Consuming Betaseries Public API)
 
 TODO: 
 
 - Get and display data from a rest interface : OK
 - Usage of the standard Android API (recycleview, intent, toast, thread ...) : OK
 - Layouts needs to use resources to display and translate strings (in EN and FR) : OK
-- API Betaseries ( MY KEY : "cf4258cf28b7" a reminder for me :p ) : OK
+- API Betaseries : OK
 
 # NOTES
 
