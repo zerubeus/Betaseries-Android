@@ -4,10 +4,7 @@ Get and display data from Betaseries API
 
 # NOTES
 
-- don't forget to click on the Earth icon in the top right corner of the detail screen to go to the series page on Betaseries :
-
-![alt text](http://s10.postimg.org/j7f4nd1sp/Capture.png "Details view")
-
+- don't forget to click on the Earth icon in the top right corner of the detail screen to go to the series page on Betaseries 
 
 ## Installation
 
